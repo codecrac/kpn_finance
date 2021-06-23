@@ -1,0 +1,89 @@
+<%- include("_includes/_header.ejs") %>
+
+
+<% if(info && info.length>0) { %>
+    <h3><%= info %></h3>
+<%}%>
+
+<style>
+    .box-title{
+        color:#002 !important;
+    }
+</style>
+
+<div class="row justify-content-center">
+    <div class="row">
+        <hr/>
+            <h4 class="text-center">PROJETS 
+                <a href="proposer-un-projet">
+                    <span class="counter text-success blink" style="padding: 5px;background-color: #002;color: white !important;">
+                        +
+                    </span>    
+                </a>
+            </h4>
+        <hr/>
+    </div>
+    <br/><br/>
+    <div class="col-lg-4 col-md-12">
+        <div class="white-box analytics-info">
+        
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                <li>
+                    <a href="liste-des-projets/examen">
+                        <h3 class="box-title"> .<br/> Qui m'interesse <br/>.</h3>
+                    </a>
+                </li>
+                    <li class="ms-auto">
+                        <span class="counter text-success blink" style="padding: 15px;background-color: #002;color: white !important;">
+                             <%= nb_projet_en_attente %>
+                        </span>
+                    </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12">
+        <div class="white-box analytics-info">
+        
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                    <div id="">
+                        <a href="liste-des-projets/valider">
+                            <h3 class="box-title text-uppercase"> .<br/> Investissement <br/>. </h3>
+                        </a>
+                    </div>
+                    <li class="ms-auto blink" style="padding: 15px;background-color: #002;color: white !important;">
+                        <span class="counter">
+                            <%= nb_projet_en_valider %>
+                        </span>
+                    </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col-lg-4 col-md-12">
+        <div class="white-box analytics-info">
+        
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                <li>
+                    <div id="">
+                        <a href="liste-des-projets/recaler">
+                            <h3 class="box-title text-uppercase"> .<br/> Total Investissement <br/>.</h3>
+                        </a>
+                    </div>
+                </li>
+                    <li class="ms-auto blink" style="padding: 15px;background-color: #002;color: white !important;">
+                        <span class="counter">
+                            <%= nb_projet_en_recaler %>
+                        </span>
+                    </li>
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<%- include("_includes/_footer.ejs") %>

@@ -1,0 +1,204 @@
+
+<div class="site-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-4 widget footer_widget widget_text">
+				
+				<div class="textwidget">
+					
+					<h4 class="text-center"> <img src="/images/logo.png" alt="" width="60" /> </h4>
+					<h4 class="text-center widgettitle">KPN FINANCE</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
+						Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 widget footer_widget widget_nav_menu">
+			</div>
+			<div class="col-md-4 col-sm-4 widget footer_widget PI_SimpleTwitterTweets">
+				<h4 class="widgettitle text-center">Notre objectif</h4>
+				<ul class="tweets text-center">
+					<li>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
+						Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.
+					<br/>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
+						Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="site-footer-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-6">
+				<div class="copyrights-col-left">
+					<p>© Groupe KPN VISA. Tous-droits-reserves</p>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6">
+				<div class="copyrights-col-right">
+					<ul id="menu-footer-menu" class="footer-menu">
+						
+						<li id="menu-item-1580"
+							class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1580"><a
+								href="/connexion-moderateur">icone admin</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 
+
+<!-- SCRIPT ET AUTRE -->
+<!-- SCRIPT ET AUTRE -->
+<!-- SCRIPT ET AUTRE -->
+	<script type="text/javascript">jQuery(document).ready(function () {
+	});</script>
+	<script type="text/javascript">(function () {
+		var c = document.body.className;
+		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+		document.body.className = c;
+	})();</script>
+	<div id="charitable-donation-form-modal-loop" style="display: none;" class="charitable-modal"><a
+			class="modal-close"></a>
+		<div class="donation-form-wrapper"></div>
+	</div>
+	<script type="text/javascript">(function ($) {
+		var resize_modal = function () {
+			$.fn.leanModal('resize', $('#charitable-donation-form-modal-loop'));
+		};
+	
+		$('[data-trigger-modal]').on('click', function () {
+			var campaign_id = $(this).data('campaign-id'),
+				$wrapper = $('#charitable-donation-form-modal-loop .donation-form-wrapper');
+	
+			if (!campaign_id) {
+				return;
+			}
+	
+			$wrapper.html("<img src=\"https://demo.imithemes.com/born-to-give/wp-content/plugins/charitable/assets//images/charitable-loading.gif\" width=\"60\" height=\"60\" alt=\"Loading&hellip;\" />");
+	
+			resize_modal();
+	
+			$.ajax({
+				type: "POST",
+				data: {
+					action: 'get_donation_form',
+					campaign_id: campaign_id
+				},
+				dataType: "json",
+				url: CHARITABLE_VARS.ajaxurl,
+				xhrFields: {
+					withCredentials: true
+				},
+				success: function (response) {
+					if (response.success) {
+						$wrapper.html(response.data);
+	
+						new CHARITABLE.Donation_Form($wrapper.find('#charitable-donation-form'));
+	
+						CHARITABLE.Toggle();
+	
+						resize_modal();
+	
+						return;
+					}
+	
+					$wrapper.html("Unfortunately, something went wrong while trying to retrieve the donation form. Please reload the page and try again.");
+				},
+				error: function () {
+					$wrapper.html("Unfortunately, something went wrong while trying to retrieve the donation form. Please reload the page and try again.");
+				}
+			}).fail(function (response) {
+				if (window.console && window.console.log) {
+					console.log(response);
+				}
+			});
+	
+			return false;
+		});
+	})(jQuery);</script>
+	<link rel='stylesheet' id='vc_carousel_css-css'
+		  href='/wp-content/plugins/js_composer/assets/lib/vc_carousel/css/vc_carousel.min31dc.css?ver=6.6.0' type='text/css'
+		  media='all'/>
+	<link rel='stylesheet' id='lean-modal-css-css'
+		  href='/wp-content/plugins/charitable/assets/css/modal.minafb2.css?ver=1.6.48' type='text/css' media='all'/>
+	<script type='text/javascript'
+			id='sw-script-js-extra'>var sw_local = {"front_url": "https:\/\/demo.imithemes.com\/born-to-give\/wp-content\/plugins\/imi-style-switcher\/"};</script>
+	<script type='text/javascript'
+			id='wp-polyfill-js-after'>('fetch' in window) || document.write('<script src="wp-includes/js/dist/vendor/wp-polyfill-fetch.min6e0e.js?ver=3.0.0"></scr' + 'ipt>');
+	(document.contains) || document.write('<script src="wp-includes/js/dist/vendor/wp-polyfill-node-contains.min2e00.js?ver=3.42.0"></scr' + 'ipt>');
+	(window.DOMRect) || document.write('<script src="wp-includes/js/dist/vendor/wp-polyfill-dom-rect.min2e00.js?ver=3.42.0"></scr' + 'ipt>');
+	(window.URL && window.URL.prototype && window.URLSearchParams) || document.write('<script src="wp-includes/js/dist/vendor/wp-polyfill-url.min5aed.js?ver=3.6.4"></scr' + 'ipt>');
+	(window.FormData && window.FormData.prototype.keys) || document.write('<script src="wp-includes/js/dist/vendor/wp-polyfill-formdata.mine9bd.js?ver=3.0.12"></scr' + 'ipt>');
+	(Element.prototype.matches && Element.prototype.closest) || document.write('<script src="wp-includes/js/dist/vendor/wp-polyfill-element-closest.min4c56.js?ver=2.0.2"></scr' + 'ipt>');
+	('objectFit' in document.documentElement.style) || document.write('<script src="wp-includes/js/dist/vendor/wp-polyfill-object-fit.min531b.js?ver=2.3.4"></scr' + 'ipt>');</script>
+	<script type='text/javascript' id='contact-form-7-js-extra'>var wpcf7 = {
+		"api": {
+			"root": "https:\/\/demo.imithemes.com\/born-to-give\/wp-json\/",
+			"namespace": "contact-form-7\/v1"
+		}, "cached": "1"
+	};</script>
+	<script type='text/javascript' id='woocommerce-js-extra'>var woocommerce_params = {
+		"ajax_url": "\/born-to-give\/wp-admin\/admin-ajax.php",
+		"wc_ajax_url": "\/born-to-give\/?wc-ajax=%%endpoint%%"
+	};</script>
+	<script type='text/javascript' id='wc-cart-fragments-js-extra'>var wc_cart_fragments_params = {
+		"ajax_url": "\/born-to-give\/wp-admin\/admin-ajax.php",
+		"wc_ajax_url": "\/born-to-give\/?wc-ajax=%%endpoint%%",
+		"cart_hash_key": "wc_cart_hash_038c5e35e793a1fc4c8e58eef3123650",
+		"fragment_name": "wc_fragments_038c5e35e793a1fc4c8e58eef3123650",
+		"request_timeout": "5000"
+	};</script>
+	<script type='text/javascript' id='borntogive_fullcalendar_init-js-extra'>var calenderEvents = {
+		"homeurl": "https:\/\/demo.imithemes.com\/born-to-give\/wp-content\/themes\/born-to-give",
+		"monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+		"monthNamesShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+		"dayNames": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+		"dayNamesShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+		"time_format": "h:mm t",
+		"start_of_week": "1",
+		"googlekey": "",
+		"googlecalid": "",
+		"ajaxurl": "https:\/\/demo.imithemes.com\/born-to-give\/wp-admin\/admin-ajax.php",
+		"calheadview": "1",
+		"eventLimit": "4",
+		"today": "Today",
+		"month": "Month",
+		"week": "Week",
+		"day": "Day",
+		"view": "month"
+	};</script>
+	<script type='text/javascript'
+			src='../../www.google.com/recaptcha/apid199.js?render=6Ld7GYYUAAAAAIySihMb0WCWewAFPuGzta0OR6AQ&amp;ver=3.0'
+			id='google-recaptcha-js'></script>
+	<script type='text/javascript' id='wpcf7-recaptcha-js-extra'>var wpcf7_recaptcha = {
+		"sitekey": "6Ld7GYYUAAAAAIySihMb0WCWewAFPuGzta0OR6AQ",
+		"actions": {"homepage": "homepage", "contactform": "contactform"}
+	};</script>
+	<script type='text/javascript' id='charitable-script-js-extra'>var CHARITABLE_VARS = {
+		"ajaxurl": "https:\/\/demo.imithemes.com\/born-to-give\/wp-admin\/admin-ajax.php",
+		"loading_gif": "https:\/\/demo.imithemes.com\/born-to-give\/wp-content\/plugins\/charitable\/assets\/\/images\/charitable-loading.gif",
+		"country": "AU",
+		"currency": "AUD",
+		"currency_symbol": "$",
+		"currency_format_num_decimals": "2",
+		"currency_format_decimal_sep": ".",
+		"currency_format_thousand_sep": ",",
+		"currency_format": "%s%v",
+		"minimum_donation": "0",
+		"permit_0_donation": "",
+		"error_invalid_amount": "You must donate more than $0.00.",
+		"error_required_fields": "Please fill out all required fields.",
+		"error_unknown": "Your donation could not be processed. Please reload the page and try again.",
+		"error_invalid_cc_number": "The credit card passed is not valid.",
+		"error_invalid_cc_expiry": "The credit card expiry date is not valid.",
+		"version": "1.6.48",
+		"test_mode": "1"
+	};</script>
+	<script defer src="/wp-content/cache/autoptimize/15/js/autoptimize_d19cc72d826fc8403f6d7096702aac99.js"></script>
+	</body>
+	<!-- Mirrored from demo.imithemes.com/born-to-give/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Jun 2021 23:54:29 GMT -->
+	</html>

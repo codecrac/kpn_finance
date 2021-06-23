@@ -1,0 +1,52 @@
+<%- include("_includes/_header.ejs") %>
+
+<div class="row">
+    <h3 class="text-center">Liste des projets [<span class="text-uppercase"><%= etat %> </span>] </h1>
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class="table-responsive">
+                <table class="datatable text-center table table-stripped ">
+                    <thead>
+                    <tr>
+                        <th class="border-top-0">Date soumission</th>
+                        <th class="border-top-0">Projet</th>
+                        <th class="border-top-0">Porteur du projet</th>
+                        <th class="border-top-0">Statut du projet</th>
+                        <th class="border-top-0">Etat financement</th>
+                        <th class="border-top-0">#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <% liste_projet.forEach(function(projet){ 
+                            var le_mois = parseInt( new Date(projet.createdAt).getMonth() ) + 1;
+                            var date_soumission = new Date(projet.createdAt).getDate() +"/"+ le_mois +"/"+ new Date(projet.createdAt).getFullYear();
+                            %>
+                            <tr>
+                                <td><%= date_soumission  %> </td>
+                                <td><%= projet.titre %> </td>
+                                <td><%= projet.Utilisateur.nom_complet %> </td>
+                                <td> <span class="btn btn-success text-capitalize text-white"> <%= projet.etat %> </span> </td>
+                                <td> <span class="btn btn-warning text-capitalize"> <%= projet.financement != null ? projet.financement : "-"  %> </span> </td>
+                                <td> 
+                                    <a href="/espace-moderateur/details-projet/<%= projet.id %>" class="btn btn-primary" >Voir les details</a>
+                                 </td>
+                                
+                            </tr>
+                            
+                        <% }); %>
+                        
+                        <div class="modal fade bd-example-modal-lg" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                ...
+                              </div>
+                            </div>
+                          </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("_includes/_footer.ejs") %>

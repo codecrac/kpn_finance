@@ -1,0 +1,52 @@
+<%- include("_includes/_header.ejs") %>
+
+<style>
+    td,th{
+        text-align: center;
+    }
+</style>
+
+<div class="row">
+    <h3 class="text-center">Liste des collectes [<span class="text-uppercase"><%= etat %> </span>] </h1>
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class="table-responsive">
+                <table class="datatable table table-stripped">
+                    <thead>
+                    <tr>
+                        
+                        <th class="border-top-0">Projet</th>
+                        <th class="border-top-0">Porteur du projet</th>
+                        
+                        <th class="border-top-0">Objectif</th>
+                        <th class="border-top-0">Montant Collecté</th>
+                        
+                        
+                        <th class="border-top-0">#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <% liste_collectes.forEach(function(collecte){ %>
+                            <tr>
+                                <td><%= collecte.Utilisateur.nom_complet %> </td>
+                                <td><%= collecte.titre %> </td>
+                                
+                                <td class="border-top-0"><%= collecte.montant_objectif %> FCFA</td>
+                                <td class="border-top-0">
+                                    [ <%= parseFloat(collecte.montant_collecter * 100 / collecte.montant_objectif).toFixed(2) %> % ]
+                                    <br/>
+                                    <%= collecte.montant_collecter %> FCFA
+                                </td>
+                                
+                                <td> <a href="/espace-moderateur/details-projet/<%= collecte.id %>" class="btn btn-primary"> Voir les Details </a> </td>
+                              
+                             </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("_includes/_footer.ejs") %>

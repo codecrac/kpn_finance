@@ -1,0 +1,119 @@
+<%- include("_includes/_header.ejs") %>
+
+
+<% if(info && info.length>0) { %>
+    <h3><%= info %></h3>
+<%}%>
+
+<style>
+    .box-title{
+        color:#002 !important;
+    }
+</style>
+
+<div class="row justify-content-center">
+    <div class="row text-center">
+        <hr/>
+            <span> Nous avons hâte de vous aidé a mettre votre projet sur pieds.  </span>
+            <h3 class="box-title text-center"> Quel est votre projet ? </h3>
+            
+<% if(error && error.length >0){ %>
+    <div class="alert alert-danger text-center" role="alert">
+        <%= error %>
+    </div>
+<% } %>
+
+
+<% if(info && info.length >0){ %>
+    <div class="alert alert-info text-center" role="alert">
+        <%= info %>
+    </div>
+<% } %>
+        <hr/>
+    </div>
+   
+</div>
+	
+
+<div class="container-fluid">
+    <form class="form-horizontal form-material" method="post" enctype="multipart/form-data" action="/traitement-porteur/enregistrer-projet">
+        <div class="row">
+            
+					<% if(error && error.length >0){ %>
+						<div class="alert alert-danger text-center" role="alert">
+							<%= error %>
+						</div>
+					<% } %>
+
+					
+					<% if(info && info.length >0){ %>
+						<div class="alert alert-info text-center" role="alert">
+							<%= info %>
+						</div>
+					<% } %>
+					
+        <!-- Column -->
+          <div class="row">    
+                    <div class="form-group col-md-12">
+                        <h3 class="text-uppercase text-decoration-underline text-center">INFORMATIONS PROJET</h3>
+                        <label class="col-sm-12">Lieu d'habitation <i class="text-danger">*</i></label>
+                        <div class="col-sm-12 border-bottom">
+                            <select class="form-select shadow-none p-0 border-0 form-control-line searchable-select" name="type_retour" required>
+                                <option value>Type de retour sur investissement</option>
+                                <option value="actions">Actions</option>
+                                <option value="remboursement">Remboursement + %</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12 pl-4">
+                        
+                            <div class="form-group mb-4">
+                                <label class="col-md-12 p-0">TITRE  <i class="text-danger">*</i> </label>
+                                <div class="col-md-12 border-bottom p-0">
+                                    <input type="text" maxlength="40" placeholder="Les Jupons de Louison" class="form-control p-0 border-0" autocomplete="off" name="titre" required> 
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="col-md-12 p-0">Description.  <i class="text-danger">*</i></label>
+                                <div class="col-md-12 border-bottom p-0">
+                                    <textarea style="border: 1px solid #ccc;padding:5px" maxlength="1500" rows="10" placeholder="La mode jetable et les productions au bout du monde n'ont plus lieu d'être. Les Jupons de Louison changent radicalement les habitudes de consommation de leurs clients."
+                                     class="form-control p-0 " name="description" required></textarea>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="col-md-12 p-0"> Combien vous faut-il ( FCFA ) ?  <i class="text-danger">*</i></label>
+                                <div class="col-md-12 border-bottom p-0">
+                                    <input type="number" placeholder="4000000" class="form-control p-0 border-0" autocomplete="off" name="montant_objectif" required> 
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="col-md-12 p-0">Lien video de presentation sur youtube <i class="text-danger">*</i> </label>
+                                    <div class="col-md-12 border-bottom p-0">
+                                        <input type="link" placeholder="https://youtu.be/KHtgHzeOa7U" required autocomplete="off" class="form-control p-0 border-0" name="pitch"> 
+                                    </div>
+                            </div>
+                            
+                            <div class="form-group mb-4" >
+                                <label class="col-md-12 p-0">Image illustration du projet </label>
+                                    <div class="col-md-12 border-bottom p-0">
+                                        <input type="file" class="form-control p-0 border-0" name="image_illustration" > 
+                                    </div>
+                            </div>
+                            
+                            <!-- <div class="form-group mb-4" style="display:none">
+                                <label class="col-md-12 p-0">presentation complete (*pdf)  <i class="text-danger">*</i> </label>
+                                    <div class="col-md-12 border-bottom p-0">
+                                        <input type="file" placeholder="Johnathan Doe" class="form-control p-0 border-0" name="presentation_pdf" > 
+                                    </div>
+                            </div> -->
+
+                            <div class="form-group mb-4">
+                                <div class="col-sm-12 text-center">
+                                    <button class="btn btn-success">Soummetre</button>
+                                </div>
+                            </div>
+                    </div>
+        </div>
+<%- include("_includes/_footer.ejs") %>

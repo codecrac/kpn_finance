@@ -1,0 +1,174 @@
+<%- include("_includes/_header.ejs") %>
+
+		<div class="hero-area">
+			<div class="flexslider heroflex hero-slider" data-autoplay="no" data-pagination="" data-arrows="yes"
+				 data-style="fade" data-pause="yes" style="height: px">
+				<ul class="slides">
+					<li class="parallax"
+						style="background-image:url(wp-content/uploads/sites/15/2016/03/slide4.jpg); height: px">
+						<div class="flex-caption">
+							<div class="container">
+								<div class="flex-caption-table">
+									<div class="flex-caption-cell">
+										<div class="flex-caption-text">
+											<div class="flex-caption-text text-align-left"><h2>Que votre vie soit
+												<br>une inspiration</h2>
+												<p>Kpn finance <br> Plateforme de financement participatif dediée au entrepreuneur ivoirien </p> <a
+														href="#liste_projets"
+														class="btn btn-primary">Decouvrir les projets</a></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="main-container">
+			<div class="content">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12" id="content-col">
+							<div class="post-content">
+								<div data-vc-full-width="true" data-vc-full-width-init="false"
+									 data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_row-no-padding">
+									<div class="wpb_column vc_column_container vc_col-sm-4">
+										<div class="vc_column-inner">
+											<div class="wpb_wrapper"><a href="our-causes/index.html" class="featured-link"
+																		style="background:#3494aa; color:#ffffff;"> <span></span>
+												<strong></strong></a></div>
+										</div>
+									</div>
+									<div class="wpb_column vc_column_container vc_col-sm-4">
+										<div class="vc_column-inner">
+											<div class="wpb_wrapper"><a href="/inscription"
+																		class="featured-link"
+																		style="background:#2e8497; color:#ffffff;"> <span>Soutenez des projets</span>
+												<strong>Devenez investisseur</strong></a></div>
+										</div>
+									</div>
+									<div class="wpb_column vc_column_container vc_col-sm-4">
+										<div class="vc_column-inner">
+											<div class="wpb_wrapper"><a href="/inscription" class="featured-link"
+																		style="background:#297284; color:#ffffff;"> <span>Realiser vos projets</span>
+												<strong>Creer une collecte</strong></a></div>
+										</div>
+									</div>
+								</div>
+								<div class="vc_row-full-width vc_clearfix"></div>
+								<div data-vc-full-width="true" data-vc-full-width-init="false"
+									 class="vc_row wpb_row vc_row-fluid vc_custom_1459250962842 vc_row-has-fill">
+									<div class="wpb_column vc_column_container vc_col-sm-12">
+										<div class="vc_column-inner">
+											<div class="wpb_wrapper">
+												<div class="vc_empty_space" style="height: 32px"><span
+														class="vc_empty_space_inner"></span></div>
+												<div class="vc_row wpb_row vc_inner vc_row-fluid">
+													<div class="wpb_column vc_column_container vc_col-sm-5">
+														<div class="vc_column-inner">
+															<div class="wpb_wrapper">
+																<div class="wpb_text_column wpb_content_element ">
+																	<div class="wpb_wrapper"><h2 class="block-title">Tous les projets 
+																		sont etudiés et l'identité des porteurs est verifiée </h2></div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="wpb_column vc_column_container vc_col-sm-7">
+														<div class="vc_column-inner">
+															<div class="wpb_wrapper">
+																<div class="wpb_text_column wpb_content_element ">
+																	<div class="wpb_wrapper"><p class="">Vestibulum quam
+																		nisi, pretium a nibh sit amet, consectetur hendrerit
+																		mi. Aenean imperdiet lacus sit amet elit porta, et
+																		malesuada erat bibendum. Cras sed nunc massa.
+																		Quisque tempor dolor sit amet tellus malesuada,
+																		malesuada iaculis eros dignissim. Aenean vitae diam
+																		id lacus fringilla maximus. Mauris auctor efficitur
+																		nisl, non blandit urna fermentum nec.</p></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="vc_empty_space" style="height: 32px"><span
+														class="vc_empty_space_inner"></span></div>
+												<style type="text/css"
+													   media="screen">@media only screen and (max-width: 768px) {
+													.campaign-loop.campaign-grid.masonry {
+														-moz-column-count: 1;
+														-webkit-column-count: 1;
+														column-count: 1;
+													}
+	
+													.campaign-loop.campaign-grid .campaign, .campaign-loop.campaign-grid .campaign.hentry {
+														width: 100% !important;
+													}
+												}
+												.campaign-description {
+														display: none;
+													}
+		
+													.cause-grid-item .campaign-description-wrapper {
+														padding: 0 30px;
+													}
+												</style>
+												<div class="container">
+													<div class="row" id="liste_projets">
+														<h1 class="text-center"> Collecte en cours </h1>
+													</div>
+													<div class="row">
+														<% les_projets.forEach(function(un_projet){ %>
+														<!-- ITEM PROJET -->
+															<div class="grid-item cause-grid-item format-standard col-md-4">
+																<div class="grid-item-inner">
+																	<a href="/details-projet/<%= un_projet.id %>" class="media-box">
+																		<% if(un_projet.image_illustration != null){ %>
+																		 <img src="<%= un_projet.image_illustration %>" style="width: 100%;height:240px;"/> 
+																		<% }else{ %>
+																			<img src="/wp-content/uploads/sites/15/2016/03/causeg3.jpg" class="attachment-borntogive-600x400 size-borntogive-600x400 wp-post-image" alt="" sizes="(max-width: 600px) 100vw, 600px"/> 
+																		<% } %>
+																	</a>
+																	<div class="cause-item-container">
+																		<div class="campaign-description-wrapper"><h3><a
+																				href="/details-projet/<%= un_projet.id %>">
+																			<%= un_projet.titre %> </a></h3>
+																			
+																		<a class="cProgress"
+																		data-toggle="tooltip" data-color="1133AA"
+																		data-complete="<%= un_projet.montant_collecter *100 / un_projet.montant_objectif %>"> <strong>
+																			<%= un_projet.montant_collecter!=undefined ? un_projet.montant_collecter : '0' %></strong> </a>
+																		<div class="campaign-donation-stats"><span
+																				class="goal-amount"><%= String( un_projet.montant_collecter  ).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA</span>
+																			atteinds sur <span class="goal-amount"><%= String( un_projet.montant_objectif  ).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA</span>
+																		</div>
+							
+																		</div>
+																		<div class="campaign-donation"><a
+																				class="button donate-button button-primary"
+																				href="/details-projet/<%= un_projet.id %>"
+																				aria-label="Make a donation to Education for everyone">
+																			Voir + </a></div>
+																	</div>
+																</div>
+															</div>
+														<!-- //ITEM PROJET -->
+														<% }); %>
+
+
+													</div>
+												</div>
+												<div class="vc_empty_space" style="height: 62px"><span
+														class="vc_empty_space_inner"></span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="vc_row-full-width vc_clearfix"></div>
+								<div class="vc_row-full-width vc_clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<%- include("_includes/_footer.ejs") %>

@@ -1,0 +1,113 @@
+<%- include("_includes/_header.ejs") %>
+
+	
+<% if(info && info.length >0){ %>
+    <div class="alert alert-success text-center" role="alert">
+        <%= info %>
+    </div>
+<% } %>
+
+	
+<% if(error && error.length >0){ %>
+    <div class="alert alert-danger text-center" role="alert">
+        <%= error %>
+    </div>
+<% } %>
+
+<div class="row">
+    <h3 class="text-center">Projets Soutenus</h1>
+        <h3 class="text-center">- Collectes en cours -</h1>
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class="table-responsive">
+                <table class="datatable table text-nowrap ">
+                    <thead>
+                    <tr>
+                        <th class="border-top-0">Titre</th>
+                        <th class="border-top-0">Financement</th>
+                        <th class="border-top-0">Votre investissement</th>
+                        <th class="border-top-0">Montant atteint</th>
+                        <th class="border-top-0">Montant Objectif</th>
+                        <th class="border-top-0">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <% les_investissement.forEach(function(investissement){ 
+                            if(investissement.Projet.financement =='collecte'){
+                            %>
+                            <tr>
+                                <td><%= investissement.Projet.titre %> </td>
+                                <td>
+                                    <button>
+                                        <%= investissement.Projet.financement %>  
+                                    </button>
+                                </td>
+                                <td> <%= String(investissement.montant_investit).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA</td>
+                                <td> 
+                                    [ <%= parseFloat(investissement.Projet.montant_collecter * 100 / investissement.Projet.montant_objectif).toFixed(2) %> % ]
+                                    <br/>
+                                    <%= String(investissement.Projet.montant_collecter).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA
+                                </td>
+                                <td> <%= String(investissement.Projet.montant_objectif).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA </td>
+
+                                <td> <a href="/details-projet/<%= investissement.Projet.id %>" class="btn btn-warning"> Investir plus </a> </td>
+                            </tr>
+                        <% 
+                            }
+                            });
+                        %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+   <h3 class="text-center">- Collectes Terminees -</h1>
+        <div class="col-sm-12">
+            <div class="white-box">
+                <div class="table-responsive">
+                    <table class="datatable table text-nowrap ">
+                        <thead>
+                        <tr>
+                            <th class="border-top-0">Titre</th>
+                            <th class="border-top-0">Financement</th>
+                            <th class="border-top-0">Objectif</th>
+                            <th class="border-top-0">Votre investissement</th>
+                            <th class="border-top-0">Montant Collecté</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <% les_investissement.forEach(function(investissement){ 
+                                    if(investissement.Projet.financement =='terminer'){
+                            %>
+                                <tr>
+                                    <td><%= investissement.Projet.titre %> </td>
+                                    <td>
+                                        <button>
+                                            <%= investissement.Projet.financement %>  
+                                        </button>
+                                    </td>
+                                    <td> <%= String(investissement.montant_investit).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA</td>
+                                    <td>
+                                        [ <%= parseFloat(investissement.Projet.montant_collecter * 100 / investissement.Projet.montant_objectif).toFixed(2) %> % ]
+                                        <br/>
+                                         <%= String(investissement.Projet.montant_collecter).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA
+                                    </td>
+                                    <td> <%= String(investissement.Projet.montant_objectif).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA</td>
+                                    
+                                </tr>
+                            <% 
+                                    }
+                             });
+                            %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div> 
+
+</div>
+
+<%- include("_includes/_footer.ejs") %>

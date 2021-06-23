@@ -1,0 +1,57 @@
+<%- include("_includes/_header.ejs") %>
+
+<div class="row">
+    <h3 class="text-center">Liste des projets</h1>
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class="table-responsive">
+                <table class="datatable table text-nowrap ">
+                    <thead>
+                    <tr>
+                        <th class="border-top-0">Titre</th>
+                        <th class="border-top-0">Etat</th>
+                        <th class="border-top-0">Financement</th>
+                        <th class="border-top-0">Objectif</th>
+                        <th class="border-top-0">Montant Collecté</th>
+                        <th class="border-top-0">Pitch</th>
+                        <!-- <th class="border-top-0">Document</th> -->
+                        <!-- <th class="border-top-0">Action</th> -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <% liste_projet.forEach(function(projet){ %>
+                            <tr>
+                                <td><%= projet.titre %> </td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <%= projet.etat %> 
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-info">
+                                        <% if(projet.financement!=null){ %>
+                                            <%= projet.financement %> 
+                                        <% }else{ %>
+                                            -
+                                        <% } %> 
+                                    </button>
+                                </td>
+                                
+                                <th class="border-top-0"><%= String( projet.montant_objectif  ).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA</th>
+                                <th class="border-top-0">
+                                    [ <%= projet.montant_collecter * 100 / projet.montant_objectif %> % ]
+                                    <br/>
+                                    <%= String( projet.montant_collecter ).replace(/(.)(?=(\d{3})+$)/g,'$1 ') %> FCFA
+                                </th>
+                                <td> <a target="_blank" class="btn btn-primary" href="/details-projet/<%= projet.id %>?apercu_porteur"> Voir la video </a> </td>
+                                
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("_includes/_footer.ejs") %>
